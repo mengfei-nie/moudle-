@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script src="stastic/js/a.js" type="text/javascript"></script>
+    <script src="stastic/js/sea.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // 当前路径都根据sea.js 所在的文件位置为根路径
+        seajs.config({
+          // 设置路径，方便跨目录调用
+          paths: {
+            'arale': 'common',
+            'jquery': 'https://a.alipayobjects.com/jquery'
+          },
+
+          // 设置别名，方便调用
+          alias: {
+            'moudleC': 'common/common.js',
+            'jquery': 'jquery/jquery/1.10.1/jquery'
+          },
+
+          // 文件基础路径
+          // base:"../base"
+        });
+        // use 可以根据别名来引入 也可以根据直接根据js路径引入
+        // paths 配置文件路径
+        seajs.use(["moudleA","moudleB","arale/common.js"],function (moudleA,moudleB,moudleC) {
+            moudleA.log(moudleB.hello)
+            console.log(moudleC)
+            // moudleC.a()
+        })
+    </script>
+</body>
+</html>
